@@ -3,6 +3,7 @@ package projava;
 import java.util.List;
 
 public class InterfaceSample {
+    @FunctionalInterface
     interface Named {
         String name();
 
@@ -28,6 +29,12 @@ public class InterfaceSample {
                 new Passenger());
         for (Named p : people) {
             System.out.println(p.greeting());
+            message(p);
         }
+        message(() -> "no name");
+    }
+
+    static void message(Named named) {
+        System.out.println("Hello " + named.name());
     }
 }
